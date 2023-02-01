@@ -4,7 +4,14 @@
     <p>睿智教育云课堂</p>
     <van-image round width="2rem" height="2rem" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
   </div>
-
+  <div class="banner">
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item><img src="../assets/uploads/banner1.png" alt="" /></van-swipe-item>
+      <van-swipe-item>2</van-swipe-item>
+      <van-swipe-item><img src="../assets/uploads/banner1.png" alt="" /></van-swipe-item>
+      <van-swipe-item>4</van-swipe-item>
+    </van-swipe>
+  </div>
   <div class="copyright">
     课程内容版权均归 福州XX科技有限公司所有<br />
     350104XXXXXX号<br />
@@ -34,6 +41,7 @@ export default {
   padding: 0;
   margin: 0;
 }
+
 .top_nav {
   background-color: #000;
   width: 100%;
@@ -51,12 +59,11 @@ export default {
     position: absolute;
     left: 15px;
     top: 25px;
-
     font-size: 22px;
   }
   p {
-    font-size: 20px;
     position: absolute;
+    font-size: 20px;
     top: 25px;
     font-weight: 500;
   }
@@ -66,11 +73,24 @@ export default {
     top: 25px;
   }
 }
+.banner {
+  .my-swipe .van-swipe-item {
+    height: 25vh;
+    color: #fff;
+    font-size: 20px;
+    background-color: #39a9ed;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 .copyright {
   font-size: 12px;
   background-color: #000;
   width: 100%;
   color: #c1c1c1;
+  text-align: center;
 }
 .bottom_nav {
   width: 100%;
