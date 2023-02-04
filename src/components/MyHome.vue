@@ -2,6 +2,7 @@
   <div class="top_nav">
     <van-icon name="wap-nav" />
     <p>睿智教育云课堂</p>
+
     <van-image round width="2rem" height="2rem" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
   </div>
   <!-- 轮播图 -->
@@ -32,7 +33,7 @@
             <router-link to="/home/suggest">推荐</router-link>
           </li>
         </ul>
-        <router-view />
+        <router-view></router-view>
       </div>
       <div class="more">更多课程<van-icon name="arrow" /></div>
     </div>
@@ -51,9 +52,9 @@
     <ul>
       <li>咨询</li>
       <li>知识电商</li>
-      <li>首页</li>
+      <router-link to="/home">首页</router-link>
       <li>投资人</li>
-      <li>我的</li>
+      <router-link to="/mycenter">我的</router-link>
     </ul>
   </div>
 </template>
@@ -190,7 +191,8 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    li {
+    li,
+    a {
       list-style: none;
       text-align: center;
       line-height: 70px;
