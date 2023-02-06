@@ -2,7 +2,6 @@
   <div class="top_nav">
     <van-icon name="wap-nav" />
     <p>睿智教育云课堂</p>
-
     <van-image round width="2rem" height="2rem" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
   </div>
   <!-- 轮播图 -->

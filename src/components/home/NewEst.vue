@@ -41,6 +41,46 @@
         </div>
         <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
       </li>
+      <li class="newest_li">
+        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
+        <div class="txt">
+          <p>线上直播课程</p>
+          <span><van-icon name="eye-o" />&nbsp;1220</span>
+          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
+          <span class="cost">免费</span>
+        </div>
+        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
+      </li>
+      <li class="newest_li">
+        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
+        <div class="txt">
+          <p>线上直播课程</p>
+          <span><van-icon name="eye-o" />&nbsp;1220</span>
+          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
+          <span class="cost">免费</span>
+        </div>
+        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
+      </li>
+      <li class="newest_li">
+        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
+        <div class="txt">
+          <p>线上直播课程</p>
+          <span><van-icon name="eye-o" />&nbsp;1220</span>
+          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
+          <span class="cost">免费</span>
+        </div>
+        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
+      </li>
+      <li class="newest_li">
+        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
+        <div class="txt">
+          <p>线上直播课程</p>
+          <span><van-icon name="eye-o" />&nbsp;1220</span>
+          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
+          <span class="cost">免费</span>
+        </div>
+        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
+      </li>
     </ul>
   </div>
 </template>
@@ -59,8 +99,11 @@ export default {
 <style lang="less" scoped>
 .new {
   width: 100%;
+  // margin: 0 1px;
 
   .newest {
+    // display: flex;
+    // justify-content: center;
     .newest_li {
       display: inline-block;
       margin-left: 4px;

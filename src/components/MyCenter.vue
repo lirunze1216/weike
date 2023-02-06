@@ -6,12 +6,11 @@
   <div class="my">
     <!-- 个人信息区域 -->
     <div class="top">
-      <div class="msg">
-        <div class="img">
-          <van-icon name="https://fastly.jsdelivr.net/npm/@vant/assets/icon-demo.png" size="125" />
-        </div>
-        <span> userinfo.name </span>
+      <div class="img">
+        <van-image fit="cover" width="7rem" height="7rem" :src="userinfo.user_pic" />
       </div>
+      <span class="nick_name"> {{ userinfo.nickname }} </span>
+      <span class="user_name">用户名: {{ userinfo.username }} </span>
     </div>
     <!-- 信息区域 -->
     <div class="one"><van-cell title="已购商品" is-link to="index" /></div>
@@ -33,11 +32,31 @@
 
 <script>
 import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 export default {
   name: 'MyCenter',
   setup() {
     const active = ref('friends')
     return { active }
+  },
+  data() {
+    return {
+      userinfo: [],
+    }
+    
+  },
+  created() {
+    this.getUserInfo()
+  },
+
+  methods: {
+    async getUserInfo() {
+      const { data: res } = await this.$http.get('/my/userinfo', {})
+      if (res.status !== 0) return ElMessage.error('获取用户信息失败')
+
+      this.userinfo = res.data
+      // console.log(this.userinfo)
+    },
   },
 }
 </script>
@@ -76,27 +95,38 @@ export default {
 .my {
   margin-bottom: 80px;
   .top {
+    padding: 3px 20px;
     margin-bottom: 35px;
-    .msg {
-      width: 100%;
-      height: 200px;
-      background-color: rgba(228, 228, 228, 1);
-      text-align: center;
-      padding-top: 30px;
-      span {
-        padding-top: 20px;
-        font-size: 30px;
-        display: inline-block;
-      }
+    position: relative;
+    .img {
+      border-radius: 25%;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .nick_name {
+      position: absolute;
+      top: 0;
+      left: 120px;
+      font-size: 30px;
+      font-weight: 500;
+    }
+    .user_name {
+      position: absolute;
+      top: 45px;
+      left: 120px;
+      font-size: 15px;
+      color: #999999;
     }
   }
 }
+
 // 单元格
 .van-cell {
   background-color: rgba(228, 228, 228, 1);
   //   border-left-style: none;
 }
 .one {
+  // margin-top: 50px;
   height: 79px;
 }
 .two {

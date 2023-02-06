@@ -10,7 +10,7 @@ import MySetting from './components//my/MySetting.vue'
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { path: '/', redirect: '/login' },
+    { path: '/', redirect: '/home' },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
 
@@ -31,7 +31,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login') {
+  if (to.path === '/login' || to.path === '/register') {
     return next()
   }
   const token = localStorage.getItem('token')

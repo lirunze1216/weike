@@ -49,12 +49,14 @@ export default {
     const onSubmit = (values) => {
       // console.log('submit', values)
     }
+
     return {
       username,
       password,
       onSubmit,
     }
   },
+
   methods: {
     async onLoginClick() {
       let postData = qs.stringify({ username: this.username, password: this.password })
@@ -71,6 +73,7 @@ export default {
     toRegister() {
       this.$router.push('/register')
     },
+    
   },
 }
 </script>
