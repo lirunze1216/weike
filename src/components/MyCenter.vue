@@ -19,25 +19,26 @@
       <van-cell title="投资人认证" is-link to="index" />
       <van-cell title="提交的项目" is-link to="index" />
       <van-cell title="我的收藏" is-link to="index" />
-      <br />
-      <br />
-      <van-cell title="设置" is-link to="/setting" />
     </div>
   </div>
-  <div class="bottom_nav">
-    <ul>
-      <li>咨询</li>
-      <li>知识电商</li>
-      <router-link to="/home">首页</router-link>
-      <li>投资人</li>
-      <router-link to="/mycenter">我的</router-link>
-    </ul>
-  </div>
+
+  <!-- 底部导航 -->
+  <van-tabbar v-model="active" class="bottom_nav">
+    <van-tabbar-item name="home" icon="home-o" is-link to="/home">首页</van-tabbar-item>
+    <van-tabbar-item name="search" icon="search">搜索</van-tabbar-item>
+    <van-tabbar-item name="friends" icon="friends-o" is-link to="/center">个人中心</van-tabbar-item>
+    <van-tabbar-item name="setting" icon="setting-o" is-link to="/setting">设置</van-tabbar-item>
+  </van-tabbar>
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   name: 'MyCenter',
+  setup() {
+    const active = ref('friends')
+    return { active }
+  },
 }
 </script>
 
@@ -103,30 +104,18 @@ export default {
     border-bottom: 1px solid white;
   }
 }
+// 底部导航
 .bottom_nav {
-  background-color: #fff;
-  width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1;
-  ul {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    li,
-    a {
-      list-style: none;
-      text-align: center;
-      line-height: 70px;
-      width: 70px;
-      &:nth-child(3) {
-        border: 1px solid #000;
-        border-radius: 50%;
-      }
-    }
-  }
+  z-index: 99;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  background-color: #fff;
 }
 </style>

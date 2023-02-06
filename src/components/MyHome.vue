@@ -41,41 +41,41 @@
 
   <!-- 底部权限 -->
   <div class="copyright">
+    <hr />
     课程内容版权均归 福州XX科技有限公司所有<br />
     350104XXXXXX号<br />
     锐智教育云课堂 v1.1.0 2020-2025 闽公网安备 XXX号<br />
     公司地址: 福州市闽侯 商务合作手机号: <br />
     138899887788
   </div>
-
-  <div class="bottom_nav">
-    <ul>
-      <li>咨询</li>
-      <li>知识电商</li>
-      <router-link to="/home">首页</router-link>
-      <li>投资人</li>
-      <router-link to="/mycenter">我的</router-link>
-    </ul>
-  </div>
+  <!-- 底部导航 -->
+  <van-tabbar v-model="active" class="bottom_nav">
+    <van-tabbar-item name="home" icon="home-o">首页</van-tabbar-item>
+    <van-tabbar-item name="search" icon="search">搜索</van-tabbar-item>
+    <van-tabbar-item name="center" icon="friends-o" is-link to="/center">个人中心</van-tabbar-item>
+    <van-tabbar-item name="setting" icon="setting-o" is-link to="/setting">设置</van-tabbar-item>
+  </van-tabbar>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
   name: 'MyHome',
+  setup() {
+    const active = ref('home')
+    return { active }
+  },
 }
 </script>
 
 <style lang="less" scoped>
-* {
-  padding: 0;
-  margin: 0;
-}
 // 头部导航
 .top_nav {
-  background-color: #000;
+  background-color: #fff;
   width: 100%;
   height: 70px;
-  color: #fff;
+  color: #000;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -93,7 +93,7 @@ export default {
   p {
     position: absolute;
     font-size: 20px;
-    top: 25px;
+    top: 7%;
     font-weight: 500;
   }
   .van-image {
@@ -170,38 +170,24 @@ export default {
 }
 // 底部权限
 .copyright {
+  margin: 0 10%;
   font-size: 12px;
-  background-color: #000;
-  width: 100%;
+  width: 80%;
   color: #c1c1c1;
   text-align: center;
-  margin-bottom: 70px;
 }
 // 底部导航
 .bottom_nav {
-  background-color: #fff;
-  width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1;
-  ul {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    li,
-    a {
-      list-style: none;
-      text-align: center;
-      line-height: 70px;
-      width: 70px;
-      &:nth-child(3) {
-        border: 1px solid #000;
-        border-radius: 50%;
-      }
-    }
-  }
+  z-index: 1000;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  background-color: #fff;
 }
 </style>

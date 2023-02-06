@@ -25,7 +25,7 @@ const router = createRouter({
         { path: 'suggest', component: TheSuggest },
       ],
     },
-    { path: '/mycenter', component: MyCenter },
+    { path: '/center', component: MyCenter },
     { path: '/setting', component: MySetting },
   ],
 })
