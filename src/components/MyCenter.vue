@@ -33,6 +33,7 @@
 <script>
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import { getUserInfoApi } from '../api/user'
 export default {
   name: 'MyCenter',
   setup() {
@@ -43,20 +44,25 @@ export default {
     return {
       userinfo: [],
     }
-    
   },
   created() {
-    this.getUserInfo()
+    this.getUse()
   },
 
   methods: {
-    async getUserInfo() {
-      const { data: res } = await this.$http.get('/my/userinfo', {})
-      if (res.status !== 0) return ElMessage.error('获取用户信息失败')
-
-      this.userinfo = res.data
-      // console.log(this.userinfo)
+    getUse() {
+      getUserInfoApi().then((res) => {
+        if (res.status !== 0) return ElMessage.error('获取用户信息失败')
+        this.userinfo = res.data
+      })
     },
+    // async getUserInfo() {
+    //   const { data: res } = await this.$http.get('/my/userinfo', {})
+    //   if (res.status !== 0) return ElMessage.error('获取用户信息失败')
+
+    //   this.userinfo = res.data
+    //   // console.log(this.userinfo)
+    // },
   },
 }
 </script>

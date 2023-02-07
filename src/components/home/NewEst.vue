@@ -1,86 +1,18 @@
 <template>
   <div class="new">
     <ul class="newest">
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
-      <li class="newest_li">
-        <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
-        <div class="txt">
-          <p>线上直播课程</p>
-          <span><van-icon name="eye-o" />&nbsp;1220</span>
-          <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
-          <span class="cost">免费</span>
-        </div>
-        <div class="mask" :class="{ hide: isHide }">已完结 &nbsp;</div>
-      </li>
+      <router-link to="/allpro">
+        <li class="newest_li" v-for="(item, index) in list" :key="index">
+          <img src="../../assets/uploads/2032248b0487526240.png" alt="" />
+          <div class="txt">
+            <p>{{ item.title }}</p>
+            <span><van-icon name="eye-o" />&nbsp;1220</span>
+            <span class="comment"><van-icon name="comment-o" />&nbsp;246</span>
+            <span class="cost">{{ item.cost }}</span>
+          </div>
+          <div class="mask" :class="{ hide: item.isHide }">已完结 &nbsp;</div>
+        </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -90,8 +22,32 @@ export default {
   name: 'NewEst',
   data() {
     return {
-      isHide: false,
+      list: [
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: false,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+      ],
     }
+  },
+  methods: {
+    change() {
+      console.log(1)
+    },
   },
 }
 </script>

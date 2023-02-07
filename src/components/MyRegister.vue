@@ -42,6 +42,7 @@ import { ref } from 'vue'
 import qs from 'qs'
 import UploadPic from './custom_component/UploadPic.vue'
 import { ElMessage } from 'element-plus'
+import { registerApi } from '../api/user'
 export default {
   name: 'MyRegister',
   data() {
@@ -79,28 +80,29 @@ export default {
       this.pic_url = url
       // console.log(this.pic_url)
     },
-    async btn_submit() {
-      let postData = qs.stringify({
+    btn_submit() {
+      //  let postData = qs.stringify({
+      //       user_pic: this.pic_url,
+      //       username: this.username,
+      //       password: this.password,
+      //       nickname: this.nickname,
+      //       email: this.email,
+      //     })
+      registerApi({
         user_pic: this.pic_url,
         username: this.username,
         password: this.password,
         nickname: this.nickname,
         email: this.email,
+      }).then((res) => {
+        if (res.status !== 0) return ElMessage.error('注册失败!')
+        ElMessage.success('注册成功!')
+        this.$refs.reset.click()
+        this.isPic = false
+        setTimeout(() => {
+          this.$router.push('/login')
+        }, 3000)
       })
-
-      // console.log(postData)
-      const { data: res } = await this.$http.post('/api/register', postData)
-      if (res.status !== 0) return ElMessage.error('注册失败!')
-
-      ElMessage({
-        message: '注册成功!',
-        type: 'success',
-      })
-      this.$refs.reset.click()
-      this.isPic = false
-      setTimeout(() => {
-        this.$router.push('/login')
-      }, 3000)
     },
   },
 }

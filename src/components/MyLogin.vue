@@ -22,7 +22,7 @@
       />
     </van-cell-group>
     <div style="margin: 16px">
-      <van-button round block type="primary" native-type="submit" @click="onLoginClick"> 提交 </van-button>
+      <van-button round block type="primary" native-type="submit" @click="login"> 提交 </van-button>
     </div>
   </van-form>
   <div class="fu">
@@ -35,6 +35,7 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import qs from 'qs'
+import { loginApi } from '../api/user'
 export default {
   name: 'MyLogin',
   data() {
@@ -58,22 +59,24 @@ export default {
   },
 
   methods: {
-    async onLoginClick() {
-      let postData = qs.stringify({ username: this.username, password: this.password })
-      const { data: res } = await this.$http.post('/api/login', postData)
-      if (res.status !== 0) return ElMessage.error('登陆失败')
-      ElMessage({
-        message: '登录成功',
-        type: 'success',
+    async login() {
+      // let postData = qs.stringify({ username: this.username, password: this.password })
+      // console.log(postData)
+      await loginApi({ username: this.username, password: this.password }).then((res) => {
+        if (res.status !== 0) return ElMessage.error('登陆失败')
+        ElMessage({
+          message: '登录成功',
+          type: 'success',
+        })
+        localStorage.setItem('token', res.token)
+        //   // 跳转到后台主页
+        this.$router.push('/home')
       })
-      localStorage.setItem('token', res.token)
-      // 跳转到后台主页
-      this.$router.push('/home')
     },
+
     toRegister() {
       this.$router.push('/register')
     },
-    
   },
 }
 </script>
