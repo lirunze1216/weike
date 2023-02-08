@@ -1,8 +1,24 @@
 <template>
   <div class="top_nav">
-    <van-icon name="wap-nav" />
-    <p>睿智教育云课堂</p>
+    <!-- <van-icon name="wap-nav" /> -->
+    <p class="big">睿智教育云课堂</p>
+
     <van-image round width="2rem" height="2rem" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
+
+    <!-- 跳转到内容的图标 -->
+    <van-icon name="wap-nav" size="30" @click="showPopup" />
+    <!-- 顶部弹出 -->
+    <van-popup v-model:show="show" position="top" :style="{ height: '40%' }">
+      <div class="main">
+        <van-button plain type="primary" to="/prolist">全部课程</van-button>
+        <div class="title">
+          <p class="one">教师资格证</p>
+          <p class="two">全部课程</p>
+          <p class="one">福建计算机课程系统</p>
+          <p class="two">全部课程</p>
+        </div>
+      </div>
+    </van-popup>
   </div>
   <!-- 轮播图 -->
   <div class="banner">
@@ -63,7 +79,18 @@ export default {
   name: 'MyHome',
   setup() {
     const active = ref('home')
-    return { active }
+    // return { active }
+
+    //左边的导航图标对应的js里的下拉内容
+    const show = ref(false)
+    const showPopup = () => {
+      show.value = true
+    }
+    return {
+      show,
+      showPopup,
+      active,
+    }
   },
 }
 </script>
@@ -89,7 +116,7 @@ export default {
     top: 25px;
     font-size: 22px;
   }
-  p {
+  .big {
     position: absolute;
     font-size: 20px;
     top: 7%;
@@ -99,6 +126,24 @@ export default {
     position: absolute;
     right: 5px;
     top: 25px;
+  }
+
+  //左上图标的下拉内容
+  .main {
+    // 边框离正文的距离
+    padding-top: 20px;
+    padding-bottom: 20px;
+    // 全部课程的按钮
+    .van-button--plain {
+      width: 100%;
+    }
+    .title {
+      padding-left: 20px;
+      .one {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
   }
 }
 // 轮播图

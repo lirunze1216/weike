@@ -13,11 +13,11 @@
       <span class="user_name">用户名: {{ userinfo.username }} </span>
     </div>
     <!-- 信息区域 -->
-    <div class="one"><van-cell title="已购商品" is-link to="index" /></div>
+    <div class="one"><van-cell title="已购商品" is-link to="pro" /></div>
     <div class="two">
       <van-cell title="投资人认证" is-link to="index" />
       <van-cell title="提交的项目" is-link to="index" />
-      <van-cell title="我的收藏" is-link to="index" />
+      <van-cell title="我的购物车" is-link to="index" />
     </div>
   </div>
 
@@ -72,7 +72,8 @@ export default {
 .top_nav {
   background-color: #fff;
   width: 100%;
-  height: 70px;
+  // 以下为新注释,理由同下
+  // height: 70px;
   color: #000;
   position: relative;
   display: flex;
@@ -84,12 +85,15 @@ export default {
   .van-icon {
     font-size: 20px;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
+    // 以下两行为新添,使顶部图标和文字在同一行上
+    left: 15px;
+    top: 25px;
+    // left: 0;
+    // top: 0;
+    // width: 70px;
+    // height: 70px;
+    // line-height: 70px;
+    // text-align: center;
   }
   p {
     position: absolute;

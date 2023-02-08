@@ -120,17 +120,11 @@ export default {
   // 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
   background-size: contain;
   position: relative;
-  .van-icon-wap-home {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: black;
-  }
+
   // 头部导航
   .top_nav {
     background-color: #fff;
     width: 100%;
-    height: 70px;
     color: #000;
     position: relative;
     display: flex;
@@ -143,12 +137,14 @@ export default {
     .left {
       font-size: 20px;
       position: absolute;
-      left: 0;
-      top: 0;
-      width: 70px;
-      height: 70px;
-      line-height: 70px;
-      text-align: center;
+      // left: 0;
+      // top: 0;
+      // width: 70px;
+      // height: 70px;
+      // line-height: 70px;
+      // text-align: center;
+      left: 15px;
+      top: 25px;
     }
 
     .big {
