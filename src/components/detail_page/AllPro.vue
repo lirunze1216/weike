@@ -10,7 +10,7 @@
   </div>
   <div class="main">
     <div class="main_top">
-      <van-tabs v-model:active="active">
+      <van-tabs>
         <van-tab title="介绍">
           <div class="introduce">
             <p class="one">
@@ -57,8 +57,15 @@
     <div class="main_footer"></div>
   </div>
   <div class="footer">
-    <van-sticky :container="container">
-      <router-link to="/login"><van-button type="primary">登录</van-button></router-link>
+    <van-sticky>
+      <van-action-bar v-if="isdelete">
+        <van-action-bar-icon icon="chat-o" text="客服" />
+        <van-action-bar-icon icon="shop-o" text="店铺" />
+        <van-action-bar-button color="#be99ff" type="warning" text="加入购物车" />
+        <van-action-bar-button color="#7232dd" type="danger" text="立即购买" />
+      </van-action-bar>
+
+      <router-link to="/login" v-else><van-button type="primary">登录</van-button></router-link>
     </van-sticky>
   </div>
 </template>
@@ -67,6 +74,11 @@
 import { ref } from 'vue'
 export default {
   name: 'AllPro',
+  data() {
+    return {
+      isdelete: true,
+    }
+  },
   setup() {
     const list = ref([])
     const loading = ref(false)
@@ -102,7 +114,7 @@ export default {
 
 <style lang="less" scoped>
 .top {
-  background-image: url('../assets/课程封面.png');
+  background: url('../../assets/uploads/174655f65e0a441584.png') no-repeat;
   height: 230px;
   width: 100%;
   // 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。

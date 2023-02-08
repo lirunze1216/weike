@@ -8,7 +8,7 @@ import TheSuggest from './components/home/TheSuggest.vue'
 import MyCenter from './components/MyCenter.vue'
 import MySetting from './components//my/MySetting.vue'
 import AllPro from './components/detail_page/AllPro.vue'
-import Shopping from './components/detail_page/Shopping.vue'
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -30,7 +30,6 @@ const router = createRouter({
     { path: '/center', component: MyCenter },
     { path: '/setting', component: MySetting },
     { path: '/allpro', component: AllPro },
-    { path: '/shopping', component: Shopping },
   ],
 })
 
