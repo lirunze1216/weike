@@ -17,7 +17,7 @@
     <div class="two">
       <van-cell title="投资人认证" is-link to="index" />
       <van-cell title="提交的项目" is-link to="index" />
-      <van-cell title="我的购物车" is-link to="index" />
+      <van-cell title="我的购物车" is-link to="mycard" />
     </div>
   </div>
 

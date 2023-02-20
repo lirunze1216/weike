@@ -2,7 +2,6 @@
   <div class="top_nav">
     <p>睿智教育云课堂</p>
   </div>
-
   <van-form @submit="onSubmit">
     <van-cell-group inset>
       <van-field

@@ -10,6 +10,7 @@ import MySetting from './components//my/MySetting.vue'
 import AllPro from './components/detail_page/AllPro.vue'
 import ProList from './components/detail_page/ProList.vue'
 import MyPro from './components/detail_page/MyPro.vue'
+import MyCard from './components/detail_page/MyCard.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -33,10 +34,8 @@ const router = createRouter({
     { path: '/setting', component: MySetting },
     { path: '/allpro', component: AllPro },
     { path: '/prolist', component: ProList },
-    {
-      path: '/pro',
-      component: MyPro,
-    },
+    { path: '/pro', component: MyPro },
+    { path: '/mycard', component: MyCard },
   ],
 })
 

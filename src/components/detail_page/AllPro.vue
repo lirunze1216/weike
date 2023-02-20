@@ -60,7 +60,7 @@
     <van-sticky>
       <van-action-bar v-if="isdelete">
         <van-action-bar-icon icon="chat-o" text="客服" />
-        <van-action-bar-icon icon="shop-o" text="店铺" />
+        <van-action-bar-icon icon="cart-o" text="购物车" to="mycard" dot />
         <van-action-bar-button color="#be99ff" type="warning" text="加入购物车" />
         <van-action-bar-button color="#7232dd" type="danger" text="立即购买" />
       </van-action-bar>
@@ -68,6 +68,8 @@
       <router-link to="/login" v-else><van-button type="primary">登录</van-button></router-link>
     </van-sticky>
   </div>
+  <!-- 回到顶部 -->
+  <van-back-top right="5vw" bottom="8vh" />
 </template>
 
 <script>
@@ -81,6 +83,7 @@ export default {
   },
   setup() {
     const list = ref([])
+    // const list = [...Array(50).keys()]
     const loading = ref(false)
     const finished = ref(false)
 
@@ -185,7 +188,7 @@ export default {
   height: 100%;
 }
 .footer {
-  //   position: relative;
+  position: relative;
   .van-button--primary {
     // position: absolute;
     width: 100%;

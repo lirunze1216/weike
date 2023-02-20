@@ -11,6 +11,7 @@ const app = createApp(App)
 
 app.use(router)
 app.use(ElementPlus)
+
 axios.defaults.baseURL = 'http://127.0.0.1:3007'
 
 // axios发送请求 请求头自动加token
