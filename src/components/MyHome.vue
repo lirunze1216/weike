@@ -1,56 +1,65 @@
 <template>
   <div class="top_nav">
-    <!-- <van-icon name="wap-nav" /> -->
-    <p class="big">睿智教育云课堂</p>
-
-    <van-image round width="2rem" height="2rem" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
-
     <!-- 跳转到内容的图标 -->
     <van-icon name="wap-nav" size="30" @click="showPopup" />
+    <p class="big">睿智教育云课堂</p>
+    <div class="user_pic">
+      <van-image round width="2rem" height="2rem" :src="userinfo.user_pic">
+        <template v-slot:error>请登录!</template>
+      </van-image>
+    </div>
+
     <!-- 顶部弹出 -->
     <van-popup v-model:show="show" position="top" :style="{ height: '40%' }">
       <div class="main">
-        <van-button plain type="primary" to="/prolist">全部课程</van-button>
-        <div class="title">
-          <p class="one">教师资格证</p>
-          <p class="two">全部课程</p>
-          <p class="one">福建计算机课程系统</p>
-          <p class="two">全部课程</p>
-        </div>
+        <ul class="navbar-collapse">
+          <li><a href="javascript:;">首页</a></li>
+          <li><a href="javascript:;">博客</a></li>
+          <li><a href="javascript:;">GitHub</a></li>
+          <li><a href="javascript:;">Tweb Cont</a></li>
+          <li><a href="javascript:;">SuperStar</a></li>
+          <li><a href="javascript:;">Web前端</a></li>
+          <li><a href="javascript:;">关于</a></li>
+        </ul>
       </div>
     </van-popup>
   </div>
-  <!-- 轮播图 -->
-  <div class="banner">
-    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-      <van-swipe-item><img src="../assets/uploads/banner1.png" alt="" /></van-swipe-item>
-      <van-swipe-item><img src="../assets/uploads/174655f65e0a441584.png" alt="" /></van-swipe-item>
-      <van-swipe-item><img src="../assets/uploads/2032248b0487526240.png" alt="" /></van-swipe-item>
-      <van-swipe-item><img src="../assets/uploads/1911335e73c1017292.jpg" alt="" /></van-swipe-item>
-    </van-swipe>
-  </div>
-  <!-- 主体页面 -->
-  <div class="box_freeTutorial">
-    <div class="inner">
-      <div class="box_hd">
-        <h3>大厂力荐、专为IT学子打造的教程</h3>
-        <p>已发布高级教程14万余节,涵盖配套源码工具等。</p>
+  <div class="wrapper">
+    <!-- 轮播图 -->
+    <div class="banner">
+      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+        <van-swipe-item><img src="../assets/uploads/banner1.png" alt="" /></van-swipe-item>
+        <van-swipe-item><img src="../assets/uploads/174655f65e0a441584.png" alt="" /></van-swipe-item>
+        <van-swipe-item><img src="../assets/uploads/2032248b0487526240.png" alt="" /></van-swipe-item>
+        <van-swipe-item><img src="../assets/uploads/1911335e73c1017292.jpg" alt="" /></van-swipe-item>
+      </van-swipe>
+    </div>
+    <!-- 主体页面 -->
+    <div class="box_freeTutorial">
+      <div class="inner">
+        <div class="box_hd">
+          <h3>大厂力荐、专为IT学子打造的教程</h3>
+          <p>已发布高级教程14万余节,涵盖配套源码工具等。</p>
+        </div>
+        <div class="box_bd">
+          <ul class="menu">
+            <li class="menu-item">
+              <router-link to="/home/newest">最新</router-link>
+            </li>
+            <li class="menu-item">
+              <router-link to="/home/hot">最热</router-link>
+            </li>
+            <li class="menu-item">
+              <router-link to="/home/suggest">推荐</router-link>
+            </li>
+          </ul>
+          <router-view></router-view>
+        </div>
+
+        <div class="more">
+          <van-button plain type="primary" to="/prolist">全部课程></van-button>
+        </div>
       </div>
-      <div class="box_bd">
-        <ul class="menu">
-          <li class="menu-item">
-            <router-link to="/home/newest">最新</router-link>
-          </li>
-          <li class="menu-item">
-            <router-link to="/home/hot">最热</router-link>
-          </li>
-          <li class="menu-item">
-            <router-link to="/home/suggest">推荐</router-link>
-          </li>
-        </ul>
-        <router-view></router-view>
-      </div>
-      <div class="more">更多课程<van-icon name="arrow" /></div>
     </div>
   </div>
 
@@ -73,59 +82,87 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { getUserInfoApi } from '../api/user'
+import { ElMessage } from 'element-plus'
+import { ref, reactive, toRefs } from 'vue'
 
 export default {
   name: 'MyHome',
   setup() {
     const active = ref('home')
     // return { active }
-
     //左边的导航图标对应的js里的下拉内容
     const show = ref(false)
     const showPopup = () => {
       show.value = true
     }
+    const state = reactive({
+      userinfo: [],
+    })
+    const { userinfo } = toRefs(state)
     return {
       show,
       showPopup,
       active,
+      userinfo,
     }
+  },
+
+  created() {
+    this.getUse()
+  },
+
+  methods: {
+    getUse() {
+      getUserInfoApi().then(res => {
+        if (res.status !== 0) return ElMessage.error('获取用户信息失败')
+        this.userinfo = res.data
+      })
+    },
   },
 }
 </script>
 
 <style lang="less" scoped>
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  // background-color: pink;
+  @media screen and (max-width: 945px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 945px) and (max-width: 1400px) {
+    width: 80%;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 70%;
+  }
+}
 // 头部导航
 .top_nav {
   background-color: #fff;
   width: 100%;
   height: 70px;
   color: #000;
-  position: relative;
+
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-
   .van-icon {
-    position: absolute;
-    left: 15px;
-    top: 25px;
     font-size: 22px;
   }
   .big {
-    position: absolute;
     font-size: 20px;
-    top: 7%;
     font-weight: 500;
   }
-  .van-image {
-    position: absolute;
-    right: 5px;
-    top: 25px;
+  .user_pic {
+    font-size: 20px;
+    vertical-align: top;
   }
 
   //左上图标的下拉内容
@@ -133,15 +170,12 @@ export default {
     // 边框离正文的距离
     padding-top: 20px;
     padding-bottom: 20px;
-    // 全部课程的按钮
-    .van-button--plain {
-      width: 100%;
-    }
-    .title {
-      padding-left: 20px;
-      .one {
-        font-size: 20px;
-        font-weight: bold;
+    padding-left: 20px;
+    .navbar-collapse {
+      li {
+        height: 30px;
+        line-height: 30px;
+        font-size: 17px;
       }
     }
   }
@@ -149,15 +183,24 @@ export default {
 // 轮播图
 .banner {
   .my-swipe .van-swipe-item {
-    height: 25vh;
+    height: 50px;
     color: #fff;
     font-size: 20px;
     // background-color: #39a9ed;
+    @media screen and (max-width: 900px) {
+      height: 210px;
+    }
+    @media screen and (min-width: 900px) and (max-width: 1400px) {
+      height: 300px;
+    }
+    @media screen and (min-width: 1400px) {
+      height: 370px;
+    }
     img {
       margin: 0 auto;
       display: block;
       max-width: 100%;
-      height: 100%;
+      height: 100% !important;
     }
   }
 }
@@ -200,38 +243,26 @@ export default {
       }
     }
     .more {
-      width: 100px;
-      height: 40px;
       text-align: center;
-      line-height: 40px;
-      border: 1px solid #e6e6e6;
-      border-radius: 5px;
-      background-color: #f5f5f5;
-      margin-left: 35%;
-      margin-bottom: 20px;
     }
   }
 }
 // 底部权限
 .copyright {
-  margin: 0 10%;
   font-size: 12px;
-  width: 80%;
+  width: 100%;
   color: #c1c1c1;
   text-align: center;
 }
 // 底部导航
 .bottom_nav {
+  text-align: center;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 1000;
   width: 100%;
   height: 70px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
   background-color: #fff;
 }
 </style>

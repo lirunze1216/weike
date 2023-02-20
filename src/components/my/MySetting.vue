@@ -3,7 +3,9 @@
     <van-icon name="arrow-left" @click="this.$router.go(-1)" />
     <p>设置</p>
   </div>
-  <div class="outlogin" @click="outlogin">退出登录</div>
+  <div class="wrapper">
+    <div class="outlogin" @click="outlogin">退出登录</div>
+  </div>
   <!-- 底部导航 -->
   <van-tabbar v-model="active" class="bottom_nav">
     <van-tabbar-item name="home" icon="home-o" is-link to="/home">首页</van-tabbar-item>
@@ -31,6 +33,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  // background-color: pink;
+  @media screen and (max-width: 945px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 945px) and (max-width: 1400px) {
+    width: 80%;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 70%;
+  }
+}
 .top_nav {
   background-color: #fff;
   width: 100%;

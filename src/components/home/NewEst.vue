@@ -41,6 +41,54 @@ export default {
           cost: '免费',
           isHide: true,
         },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
+        {
+          cover_img: '../../assets/uploads/2032248b0487526240.png',
+          title: '线上直播课程',
+          cost: '免费',
+          isHide: true,
+        },
       ],
     }
   },
@@ -55,11 +103,8 @@ export default {
 <style lang="less" scoped>
 .new {
   width: 100%;
-  // margin: 0 1px;
-
   .newest {
-    // display: flex;
-    // justify-content: center;
+    text-align: center;
     .newest_li {
       display: inline-block;
       margin-left: 4px;
@@ -68,20 +113,25 @@ export default {
       height: 200px;
       background-color: #fff;
       position: relative;
-      border-radius: 4px;
       box-shadow: 0 1px 6px 0 rgb(0 0 0 / 8%);
-
       img {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 70%;
       }
 
       .txt {
+        position: absolute;
+        bottom: 0;
+        left: 0;
         width: 100%;
         height: 30%;
         color: #c1c1c1;
         margin-left: 10px;
         p {
+          text-align: left;
           color: #333;
           font-size: 10px;
         }
@@ -90,6 +140,7 @@ export default {
         }
         .cost {
           margin-left: 25px;
+          margin-right: 15px;
           color: #43bc60;
         }
       }
@@ -108,5 +159,9 @@ export default {
 }
 .hide {
   opacity: 0;
+}
+.wrapperr {
+  padding: 0 15px;
+  width: 100%;
 }
 </style>

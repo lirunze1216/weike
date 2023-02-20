@@ -3,21 +3,23 @@
     <van-icon name="arrow-left" @click="this.$router.go(-1)" />
     <p>个人中心</p>
   </div>
-  <div class="my">
-    <!-- 个人信息区域 -->
-    <div class="top">
-      <div class="img">
-        <van-image fit="cover" width="7rem" height="7rem" :src="userinfo.user_pic" />
+  <div class="wrapper">
+    <div class="my">
+      <!-- 个人信息区域 -->
+      <div class="top">
+        <div class="img">
+          <van-image fit="cover" width="7rem" height="7rem" :src="userinfo.user_pic" />
+        </div>
+        <span class="nick_name"> {{ userinfo.nickname }} </span>
+        <span class="user_name">用户名: {{ userinfo.username }} </span>
       </div>
-      <span class="nick_name"> {{ userinfo.nickname }} </span>
-      <span class="user_name">用户名: {{ userinfo.username }} </span>
-    </div>
-    <!-- 信息区域 -->
-    <div class="one"><van-cell title="已购商品" is-link to="pro" /></div>
-    <div class="two">
-      <van-cell title="投资人认证" is-link to="index" />
-      <van-cell title="提交的项目" is-link to="index" />
-      <van-cell title="我的购物车" is-link to="mycard" />
+      <!-- 信息区域 -->
+      <div class="one"><van-cell title="已购商品" is-link to="pro" /></div>
+      <div class="two">
+        <van-cell title="投资人认证" is-link to="index" />
+        <van-cell title="提交的项目" is-link to="index" />
+        <van-cell title="我的购物车" is-link to="mycard" />
+      </div>
     </div>
   </div>
 
@@ -51,7 +53,7 @@ export default {
 
   methods: {
     getUse() {
-      getUserInfoApi().then((res) => {
+      getUserInfoApi().then(res => {
         if (res.status !== 0) return ElMessage.error('获取用户信息失败')
         this.userinfo = res.data
       })
@@ -68,6 +70,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  // background-color: pink;
+  @media screen and (max-width: 945px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 945px) and (max-width: 1400px) {
+    width: 80%;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 70%;
+  }
+}
 // 头部导航
 .top_nav {
   background-color: #fff;
