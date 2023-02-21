@@ -18,6 +18,13 @@ export function getUserInfoApi() {
   return request({
     url: 'http://127.0.0.1:3007/my/userinfo',
     method: 'get',
-  
+  })
+}
+
+export function postUserInfoApi(data) {
+  return request({
+    url: 'http://127.0.0.1:3007/my/userinfo',
+    method: 'post',
+    data,
   })
 }

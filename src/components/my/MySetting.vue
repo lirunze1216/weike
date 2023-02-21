@@ -4,8 +4,14 @@
     <p>设置</p>
   </div>
   <div class="wrapper">
+    <div class="userinfo">
+      <van-cell-group inset title="个人信息">
+        <van-cell title="个人信息" is-link to="/changeUser" value="去完善" label="我的个人信息" />
+      </van-cell-group>
+    </div>
     <div class="outlogin" @click="outlogin">退出登录</div>
   </div>
+
   <!-- 底部导航 -->
   <van-tabbar v-model="active" class="bottom_nav">
     <van-tabbar-item name="home" icon="home-o" is-link to="/home">首页</van-tabbar-item>
@@ -15,20 +21,14 @@
   </van-tabbar>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-export default {
-  name: 'MySetting',
-  setup() {
-    const active = ref('setting')
-    return { active }
-  },
-  methods: {
-    outlogin() {
-      window.localStorage.clear()
-      this.$router.push('/login')
-    },
-  },
+import { useRouter } from 'vue-router'
+let router = useRouter()
+const active = ref('setting')
+const outlogin = () => {
+  window.localStorage.clear()
+  router.push('/login')
 }
 </script>
 
@@ -37,11 +37,8 @@ export default {
   margin: 0 auto;
   width: 100%;
   // background-color: pink;
-  @media screen and (max-width: 945px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 945px) and (max-width: 1400px) {
-    width: 80%;
+  @media screen and (min-width: 980px) and (max-width: 1400px) {
+    width: 78%;
   }
   @media screen and (min-width: 1400px) {
     width: 70%;

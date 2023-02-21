@@ -30,12 +30,20 @@ const router = createRouter({
         { path: 'suggest', component: TheSuggest },
       ],
     },
-    { path: '/center', component: MyCenter },
+    {
+      path: '/center',
+      component: MyCenter,
+      children: [
+        { path: 'userinfo', name: 'userinfo', component: () => import('./components/my_center/my_userinfo.vue') },
+      ],
+    },
     { path: '/setting', component: MySetting },
     { path: '/allpro', component: AllPro },
     { path: '/prolist', component: ProList },
     { path: '/pro', component: MyPro },
     { path: '/mycard', component: MyCard },
+    { path: '/changeUser', name: 'changeUser', component: () => import('./components/my_center/change_user.vue') },
+    { path: '/mycardnew', name: 'mycardnew', component: () => import('./components/detail_page/MyCardNew.vue') },
   ],
 })
 

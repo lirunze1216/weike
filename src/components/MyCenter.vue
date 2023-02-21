@@ -14,9 +14,14 @@
         <span class="user_name">用户名: {{ userinfo.username }} </span>
       </div>
       <!-- 信息区域 -->
-      <div class="one"><van-cell title="已购商品" is-link to="pro" /></div>
+      <div class="one">
+        <van-cell title="个人信息" is-link arrow-direction="down" @click="this.isUserinfo = !this.isUserinfo" />
+        <Transition name="slide-fade">
+          <my_userinfo v-if="isUserinfo" :userInfo="userinfo"></my_userinfo>
+        </Transition>
+      </div>
       <div class="two">
-        <van-cell title="投资人认证" is-link to="index" />
+        <van-cell title="已购商品" is-link to="pro" />
         <van-cell title="提交的项目" is-link to="index" />
         <van-cell title="我的购物车" is-link to="mycard" />
       </div>
@@ -36,11 +41,14 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { getUserInfoApi } from '../api/user'
+import my_userinfo from './my_center/my_userinfo.vue'
+import { RouterView } from 'vue-router'
 export default {
   name: 'MyCenter',
   setup() {
     const active = ref('friends')
-    return { active }
+    const isUserinfo = ref(false)
+    return { active, isUserinfo }
   },
   data() {
     return {
@@ -50,35 +58,40 @@ export default {
   created() {
     this.getUse()
   },
-
   methods: {
     getUse() {
       getUserInfoApi().then(res => {
         if (res.status !== 0) return ElMessage.error('获取用户信息失败')
         this.userinfo = res.data
+        // console.log(this.userinfo)
       })
     },
-    // async getUserInfo() {
-    //   const { data: res } = await this.$http.get('/my/userinfo', {})
-    //   if (res.status !== 0) return ElMessage.error('获取用户信息失败')
-
-    //   this.userinfo = res.data
-    //   // console.log(this.userinfo)
-    // },
   },
+  components: { RouterView },
 }
 </script>
 
 <style lang="less" scoped>
+.slide-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
 .wrapper {
   margin: 0 auto;
   width: 100%;
   // background-color: pink;
-  @media screen and (max-width: 945px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 945px) and (max-width: 1400px) {
-    width: 80%;
+  @media screen and (min-width: 980px) and (max-width: 1400px) {
+    width: 78%;
   }
   @media screen and (min-width: 1400px) {
     width: 70%;
@@ -89,7 +102,7 @@ export default {
   background-color: #fff;
   width: 100%;
   // 以下为新注释,理由同下
-  // height: 70px;
+  height: 70px;
   color: #000;
   position: relative;
   display: flex;
@@ -97,7 +110,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 1000;
   .van-icon {
     font-size: 20px;
     position: absolute;
@@ -122,8 +135,10 @@ export default {
   margin-bottom: 80px;
   .top {
     padding: 3px 20px;
-    margin-bottom: 35px;
+    // margin-bottom: 10px;
     position: relative;
+    left: -10px;
+    top: 15px;
     .img {
       border-radius: 25%;
       display: inline-block;
@@ -152,8 +167,8 @@ export default {
   //   border-left-style: none;
 }
 .one {
-  // margin-top: 50px;
-  height: 79px;
+  margin: 25px 0;
+  // height: 79px;
 }
 .two {
   .van-cell {

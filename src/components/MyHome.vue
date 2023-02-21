@@ -127,12 +127,8 @@ export default {
 .wrapper {
   margin: 0 auto;
   width: 100%;
-  // background-color: pink;
-  @media screen and (max-width: 945px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 945px) and (max-width: 1400px) {
-    width: 80%;
+  @media screen and (min-width: 980px) and (max-width: 1400px) {
+    width: 78%;
   }
   @media screen and (min-width: 1400px) {
     width: 70%;
@@ -187,10 +183,10 @@ export default {
     color: #fff;
     font-size: 20px;
     // background-color: #39a9ed;
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 945px) {
       height: 210px;
     }
-    @media screen and (min-width: 900px) and (max-width: 1400px) {
+    @media screen and (min-width: 945px) and (max-width: 1400px) {
       height: 300px;
     }
     @media screen and (min-width: 1400px) {
@@ -220,9 +216,15 @@ export default {
     .box_bd {
       .menu {
         list-style-type: none;
-        padding: 0;
+        padding: 0 90px;
         display: flex;
         justify-content: right;
+        @media screen and (max-width: 980px) {
+          padding: 0 10px;
+        }
+        @media screen and (min-width: 980px) {
+          padding: 0 60px;
+        }
         .menu-item {
           display: inline-block;
           margin: 10px 10px 10px 0;
