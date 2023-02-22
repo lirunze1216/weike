@@ -75,6 +75,7 @@ const { list } = toRefs(state)
 }
 .hot {
   width: 100%;
+
   .hotest {
     // text-align: center;
     .hotest_li {

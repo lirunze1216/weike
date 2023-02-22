@@ -36,6 +36,7 @@ const outlogin = () => {
 .wrapper {
   margin: 0 auto;
   width: 100%;
+  height: 460px;
   // background-color: pink;
   @media screen and (min-width: 980px) and (max-width: 1400px) {
     width: 78%;

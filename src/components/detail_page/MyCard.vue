@@ -160,6 +160,7 @@ input {
 .myCardWrapper {
   margin: 0 auto;
   width: 96%;
+  height: 530px;
   // background-color: pink;
   @media screen and (min-width: 980px) {
     width: 70%;
@@ -190,6 +191,7 @@ input {
     font-weight: 500;
   }
 }
+
 .message {
   position: relative;
   .checked {

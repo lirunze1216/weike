@@ -8,7 +8,8 @@
       <router-link to="/home"><van-icon name="wap-home-o" size="25" class="right" /></router-link>
     </div>
   </div>
-  <div class="main">
+  <div class="main wrapper">
+    <div class="pic"><img src="../../assets/uploads/1911335e73c1017292.jpg" alt="" /></div>
     <div class="main_top">
       <van-tabs>
         <van-tab title="介绍">
@@ -116,13 +117,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.top {
-  background: url('../../assets/uploads/174655f65e0a441584.png') no-repeat;
-  height: 230px;
+.wrapper {
+  margin: 0 auto;
   width: 100%;
-  // 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
-  background-size: contain;
-  position: relative;
+  height: 530px;
+  // background-color: pink;
+  @media screen and (min-width: 980px) and (max-width: 1400px) {
+    width: 78%;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 70%;
+  }
+}
+.top {
+  // background: url('../../assets/uploads/174655f65e0a441584.png') no-repeat;
+  // height: 230px;
+  // width: 100%;
+  // // 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
+  // background-size: contain;
+  // position: relative;
 
   // 头部导航
   .top_nav {
@@ -167,6 +180,19 @@ export default {
       line-height: 70px;
       text-align: center;
     }
+  }
+}
+.pic {
+  width: 100%;
+  text-align: center;
+  @media screen and (min-width: 980px) and (max-width: 1400px) {
+    width: 78%;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 70%;
+  }
+  img {
+    width: 100%;
   }
 }
 .introduce {

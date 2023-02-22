@@ -1,12 +1,14 @@
 <template>
-  <div class="top_nav">
-    <van-icon name="arrow-left" @click="this.$router.go(-1)" />
-    <p>请输入支付密码</p>
+  <div class="wrapper">
+    <div class="top_nav">
+      <van-icon name="arrow-left" @click="this.$router.go(-1)" />
+      <p>请输入支付密码</p>
+    </div>
+    <!-- 密码输入框 -->
+    <van-password-input :value="value" :focused="showKeyboard" @focus="showKeyboard = true" info="密码为 6 位数字" />
+    <!-- 数字键盘 -->
+    <van-number-keyboard v-model="value" :show="showKeyboard" @blur="blurNum" />
   </div>
-  <!-- 密码输入框 -->
-  <van-password-input :value="value" :focused="showKeyboard" @focus="showKeyboard = true" info="密码为 6 位数字" />
-  <!-- 数字键盘 -->
-  <van-number-keyboard v-model="value" :show="showKeyboard" @blur="blurNum" />
 </template>
 
 <script>
@@ -71,6 +73,18 @@ export default {
     font-size: 20px;
     top: 7%;
     font-weight: 500;
+  }
+}
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  height: 530px;
+  // background-color: pink;
+  @media screen and (min-width: 980px) and (max-width: 1400px) {
+    width: 78%;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 70%;
   }
 }
 </style>

@@ -127,6 +127,7 @@ export default {
 .wrapper {
   margin: 0 auto;
   width: 100%;
+  // height: 480px;
   @media screen and (min-width: 980px) and (max-width: 1400px) {
     width: 78%;
   }
@@ -255,6 +256,7 @@ export default {
   width: 100%;
   color: #c1c1c1;
   text-align: center;
+  // margin-bottom: 140px;
 }
 // 底部导航
 .bottom_nav {
