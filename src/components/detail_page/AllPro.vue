@@ -185,6 +185,7 @@ export default {
 .pic {
   width: 100%;
   text-align: center;
+  margin: 0 auto;
   @media screen and (min-width: 980px) and (max-width: 1400px) {
     width: 78%;
   }
